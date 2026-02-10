@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emprendedores Inteligentes | Business Coaching de Alto Nivel</title>
+    <meta name="description" content="Potencia tu negocio con estrategias de clase mundial. Coaching para emprendedores que buscan resultados extraordinarios.">
+    
+    <!-- Tailwind CSS (Framework de diseño moderno) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter (Cuerpo) y Playfair Display (Títulos) para un toque premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (Iconos modernos y limpios) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Configuración personalizada de Tailwind y Estilos Extra -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            gold: '#D4AF37', // Oro premium
+                            dark: '#0F172A', // Slate 900
+                            primary: '#1E293B', // Slate 800
+                            accent: '#3B82F6', // Azul eléctrico suave
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos personalizados para efectos de cristal y animaciones */
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.95); /* Un poco más oscuro para que resalte el logo */
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #D4AF37, #FCD34D);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* Clase para ocultar elementos antes de la animación */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efecto hover en imágenes */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom {
+            transition: transform 0.5s ease;
+        }
+        .img-zoom-container:hover .img-zoom {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-300 bg-brand-dark overflow-x-hidden selection:bg-brand-gold selection:text-brand-dark">
+
+    <!-- NAV BAR -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-24"> <!-- Aumenté ligeramente la altura para el logo -->
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer flex items-center gap-3">
+                    <!-- CORRECCIÓN: Nombre exacto solicitado por el usuario -->
+                    <img src="LOGO.PNG" alt="Logo Tu Versión de Excelencia" class="h-16 w-auto rounded-full border border-brand-gold/20 shadow-lg shadow-brand-gold/10">
+                    <div class="flex flex-col">
+                        <span class="font-serif text-xl font-bold text-white tracking-wide leading-none">
+                            Tu Versión<span class="text-brand-gold">.DeExcelencia</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#inicio" class="hover:text-brand-gold transition-colors px-3 py-2 text-sm font-medium">Inicio</a>
+                        <a href="#metodologia" class="hover:text-brand-gold transition-colors px-3 py-2 text-sm font-medium">Metodología</a>
+                        <a href="#mentorias" class="hover:text-brand-gold transition-colors px-3 py-2 text-sm font-medium">Mentorías</a>
+                        <a href="#testimonios" class="hover:text-brand-gold transition-colors px-3 py-2 text-sm font-medium">Casos de Éxito</a>
+                        <a href="#contacto" class="bg-brand-gold text-brand-dark hover:bg-yellow-400 px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg hover:shadow-yellow-500/20">
+                            Agendar Sesión
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="toggleMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div class="md:hidden hidden bg-brand-primary" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-gray-700">
+                <a href="#inicio" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+                <a href="#metodologia" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Metodología</a>
+                <a href="#mentorias" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Mentorías</a>
+                <a href="#contacto" class="text-brand-gold font-bold block px-3 py-2 rounded-md text-base">Empezar Ahora</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Conferencia de negocios" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full border border-brand-gold/30 bg-brand-gold/10 backdrop-blur-sm">
+                <span class="text-brand-gold text-xs font-bold tracking-wider uppercase">Liderazgo & Estrategia</span>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-serif font-bold text-white mb-6 leading-tight">
+                No construyas un negocio,<br>
+                construye un <span class="text-gradient">Legado.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-300 mb-10">
+                Estrategias probadas para CEOs y fundadores que buscan escalar sus empresas sin sacrificar su libertad personal.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#contacto" class="bg-brand-gold text-brand-dark px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] hover:scale-105">
+                    Aplicar al Programa
+                </a>
+                <a href="#metodologia" class="border border-white/30 hover:bg-white/10 text-white px-8 py-4 rounded-full font-bold text-lg transition-all flex items-center justify-center gap-2 group">
+                    <i data-lucide="play-circle" class="w-5 h-5 group-hover:text-brand-gold"></i>
+                    Ver Masterclass
+                </a>
+            </div>
+            
+            <!-- Stats small -->
+            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-8">
+                <div>
+                    <p class="text-3xl font-bold text-white">500+</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-wide">Emprendedores</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-white">$10M+</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-wide">Generados</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-white">15</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-wide">Años Exp.</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-bold text-white">4.9/5</p>
+                    <p class="text-xs text-gray-400 uppercase tracking-wide">Valoración</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: PROBLEMAS / SOLUCIONES (UPDATED IMAGES) -->
+    <section class="py-24 bg-brand-primary" id="metodologia">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-white mb-4">La Metodología <span class="text-brand-gold">Exclusiva</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">La mayoría de los negocios fallan por falta de estrategia, no por falta de pasión. Nosotros cerramos esa brecha.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1: Escalabilidad Predecible -->
+                <div class="bg-brand-dark rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all hover:-translate-y-2 reveal overflow-hidden group">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-all z-10"></div>
+                        <!-- Imagen 2 -->
+                        <img src="imagen 2.JPG.png" alt="Escalabilidad" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8 relative z-20 bg-brand-dark">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="trending-up" class="w-6 h-6 text-brand-gold"></i>
+                            <h3 class="text-xl font-bold text-white">Escalabilidad Predecible</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Deja de adivinar. Implementamos sistemas de ventas y operaciones que funcionan en piloto automático, permitiéndote crecer mes a mes con métricas claras.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Liderazgo de Alto Impacto -->
+                <div class="bg-brand-dark rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all hover:-translate-y-2 reveal delay-100 overflow-hidden group">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-all z-10"></div>
+                        <!-- CORRECCIÓN: Nombre exacto de imagen 3 (adjunta) -->
+                        <img src="imagen 3.PNG.jpg" alt="Liderazgo" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8 relative z-20 bg-brand-dark">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="users" class="w-6 h-6 text-blue-400"></i>
+                            <h3 class="text-xl font-bold text-white">Liderazgo de Alto Impacto</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Aprende a pararte frente a tu industria. Contrata, delega y lidera equipos 'A-Players'. Tu negocio debe funcionar igual de bien cuando tú no estás.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Mentalidad de CEO -->
+                <div class="bg-brand-dark rounded-2xl border border-white/5 hover:border-brand-gold/30 transition-all hover:-translate-y-2 reveal delay-200 overflow-hidden group">
+                    <div class="h-64 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-transparent transition-all z-10"></div>
+                        <!-- Imagen 4 -->
+                        <img src="imagen 4.JPG.png" alt="Mentalidad CEO" class="w-full h-full object-cover object-top transform group-hover:scale-110 transition-transform duration-700">
+                    </div>
+                    <div class="p-8 relative z-20 bg-brand-dark">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="brain-circuit" class="w-6 h-6 text-purple-400"></i>
+                            <h3 class="text-xl font-bold text-white">Mentalidad de CEO</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Rompe los bloqueos mentales que limitan tu facturación. El 80% del éxito es psicología, el 20% es mecánica. Transformamos tu visión.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: VISUAL SPLIT (Mentoría) -->
+    <section id="mentorias" class="py-24 bg-brand-dark overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Row 1 -->
+            <div class="flex flex-col lg:flex-row items-center gap-16 mb-24 reveal">
+                <div class="lg:w-1/2 img-zoom-container rounded-2xl overflow-hidden shadow-2xl shadow-blue-900/20">
+                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" alt="Reunión ejecutiva en oficina moderna" class="img-zoom w-full h-[500px] object-cover">
+                </div>
+                <div class="lg:w-1/2">
+                    <h4 class="text-brand-gold font-bold tracking-widest uppercase mb-2 text-sm">Mentoría 1 a 1</h4>
+                    <h2 class="text-4xl font-serif font-bold text-white mb-6">Diseña tu hoja de ruta hacia el éxito</h2>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        No es un curso grabado. Es un acompañamiento estratégico donde analizamos tu modelo de negocio, tus finanzas y tu equipo para encontrar las palancas de crecimiento inmediato.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center text-gray-400">
+                            <i data-lucide="check-circle" class="text-brand-gold w-5 h-5 mr-3"></i> Auditoría completa de negocio
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i data-lucide="check-circle" class="text-brand-gold w-5 h-5 mr-3"></i> Plan de acción trimestral
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i data-lucide="check-circle" class="text-brand-gold w-5 h-5 mr-3"></i> Acceso directo a mi red de contactos
+                        </li>
+                    </ul>
+                    <a href="#" class="text-white border-b border-brand-gold pb-1 hover:text-brand-gold transition-colors inline-flex items-center">
+                        Saber más sobre mentorías <i data-lucide="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Row 2 (Reverse) -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 reveal">
+                <div class="lg:w-1/2 img-zoom-container rounded-2xl overflow-hidden shadow-2xl shadow-yellow-900/10">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" alt="Workshop y cursos presenciales" class="img-zoom w-full h-[500px] object-cover">
+                </div>
+                <div class="lg:w-1/2">
+                    <h4 class="text-blue-400 font-bold tracking-widest uppercase mb-2 text-sm">Comunidad & Network</h4>
+                    <h2 class="text-4xl font-serif font-bold text-white mb-6">Tu red es tu patrimonio</h2>
+                    <p class="text-gray-300 mb-6 text-lg">
+                        Únete a "El Círculo Interior", nuestro mastermind exclusivo donde compartes mesa con emprendedores que facturan 6 y 7 cifras. Workshops presenciales en las oficinas más exclusivas.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white/5 p-4 rounded-lg">
+                            <h5 class="text-white font-bold mb-1">Retiros Anuales</h5>
+                            <p class="text-gray-400 text-sm">Experiencias inmersivas en locaciones de lujo.</p>
+                        </div>
+                        <div class="bg-white/5 p-4 rounded-lg">
+                            <h5 class="text-white font-bold mb-1">Q&A Semanal</h5>
+                            <p class="text-gray-400 text-sm">Sesiones en vivo para resolver bloqueos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonios" class="py-24 bg-brand-primary relative">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-brand-gold/5 rounded-full blur-3xl"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <h2 class="text-center text-3xl md:text-4xl font-serif font-bold text-white mb-16 reveal">Lo que dicen los <span class="text-brand-gold">Líderes</span></h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-brand-dark p-8 rounded-2xl relative reveal">
+                    <i data-lucide="quote" class="absolute top-8 right-8 text-white/10 w-10 h-10"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-gold">
+                        <div>
+                            <h4 class="text-white font-bold">Carlos Mendoza</h4>
+                            <p class="text-brand-gold text-xs uppercase">CEO TechSolutions</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 italic">"Pasé de trabajar 14 horas al día a tener un equipo que gestiona la operación. Dupliqué mis ingresos en 6 meses."</p>
+                    <div class="flex text-yellow-500 mt-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-brand-dark p-8 rounded-2xl relative reveal delay-100 ring-1 ring-brand-gold/20">
+                    <i data-lucide="quote" class="absolute top-8 right-8 text-white/10 w-10 h-10"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-gold">
+                        <div>
+                            <h4 class="text-white font-bold">Ana Sofía Ruiz</h4>
+                            <p class="text-brand-gold text-xs uppercase">Fundadora ArteViva</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 italic">"La claridad mental que obtuve no tiene precio. El coaching no solo mejoró mi empresa, mejoró mi calidad de vida."</p>
+                    <div class="flex text-yellow-500 mt-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-brand-dark p-8 rounded-2xl relative reveal delay-200">
+                    <i data-lucide="quote" class="absolute top-8 right-8 text-white/10 w-10 h-10"></i>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=150&q=80" alt="Cliente" class="w-14 h-14 rounded-full object-cover border-2 border-brand-gold">
+                        <div>
+                            <h4 class="text-white font-bold">David Torres</h4>
+                            <p class="text-brand-gold text-xs uppercase">Director Inmobiliaria</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 italic">"La mejor inversión del año. La red de contactos del Mastermind por sí sola vale 10 veces el precio del programa."</p>
+                    <div class="flex text-yellow-500 mt-4">
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                        <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL / CONTACT -->
+    <section id="contacto" class="py-24 bg-gradient-to-br from-slate-900 to-slate-800 border-t border-white/5">
+        <div class="max-w-4xl mx-auto px-4 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">¿Listo para escalar?</h2>
+            <p class="text-gray-300 mb-8 text-lg">Agenda una sesión de diagnóstico gratuita de 30 minutos. Analizaremos tu situación actual y determinaremos si calificas para nuestros programas.</p>
+            
+            <!-- CONTACT DETAILS ADDED HERE -->
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+                <a href="mailto:coacheduardo76@gmail.com" class="group flex items-center justify-center gap-3 bg-white/5 hover:bg-white/10 px-6 py-3 rounded-xl border border-white/10 transition-all hover:scale-105">
+                    <div class="bg-brand-gold/10 p-2 rounded-full group-hover:bg-brand-gold/20 transition-colors">
+                        <i data-lucide="mail" class="w-5 h-5 text-brand-gold"></i>
+                    </div>
+                    <span class="text-gray-300 group-hover:text-white transition-colors">coacheduardo76@gmail.com</span>
+                </a>
+                <a href="https://wa.me/526143842394" target="_blank" class="group flex items-center justify-center gap-3 bg-green-500/10 hover:bg-green-500/20 px-6 py-3 rounded-xl border border-green-500/20 transition-all hover:scale-105">
+                    <div class="bg-green-500/20 p-2 rounded-full transition-colors">
+                        <i data-lucide="phone" class="w-5 h-5 text-green-400"></i>
+                    </div>
+                    <span class="text-gray-300 group-hover:text-white transition-colors">WhatsApp: 614 384 2394</span>
+                </a>
+            </div>
+
+            <div class="bg-white/5 p-8 rounded-3xl backdrop-blur-sm border border-white/10 max-w-lg mx-auto shadow-2xl">
+                <form onsubmit="event.preventDefault(); alert('¡Gracias! Te contactaremos pronto.');" class="space-y-4">
+                    <div>
+                        <input type="text" placeholder="Nombre completo" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
+                    </div>
+                    <div>
+                        <input type="email" placeholder="Correo corporativo" class="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold transition-colors">
+                    </div>
+                    <div>
+                        <select class="w-full bg-slate-900/50 border border-slate-700 rounded-lg px-4 py-3 text-gray-400 focus:outline-none focus:border-brand-gold transition-colors">
+                            <option>Facturación actual</option>
+                            <option>$0 - $50k anual</option>
+                            <option>$50k - $250k anual</option>
+                            <option>+$1M anual</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-gold hover:bg-yellow-400 text-brand-dark font-bold py-4 rounded-lg transition-all transform hover:scale-[1.02] shadow-lg">
+                        Solicitar Acceso
+                    </button>
+                </form>
+                <p class="text-xs text-gray-500 mt-4">* Plazas limitadas por mes para garantizar calidad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
+                <!-- Brand Info -->
+                <div class="text-center md:text-left flex items-center gap-3">
+                    <!-- CORRECCIÓN: Nombre exacto solicitado por el usuario -->
+                    <img src="LOGO.PNG" alt="Logo Footer" class="h-12 w-auto rounded-full border border-white/10">
+                    <div>
+                        <span class="font-serif text-2xl font-bold text-white">
+                            Tu Versión<span class="text-brand-gold">.DeExcelencia</span>
+                        </span>
+                        <p class="text-gray-500 text-sm mt-1 max-w-xs">Estrategias de alto nivel para escalar tu negocio y recuperar tu libertad.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Info Footer -->
+                <div class="flex flex-col gap-3 text-sm text-gray-400">
+                    <a href="mailto:coacheduardo76@gmail.com" class="flex items-center gap-2 hover:text-brand-gold transition-colors">
+                        <i data-lucide="mail" class="w-4 h-4"></i> coacheduardo76@gmail.com
+                    </a>
+                    <a href="https://wa.me/526143842394" target="_blank" class="flex items-center gap-2 hover:text-brand-gold transition-colors">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +52 (614) 384-2394
+                    </a>
+                </div>
+                
+                <!-- Socials -->
+                <div class="flex space-x-6 items-center">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/share/1GhmEDFCJK/?mibextid=wwXIfr" target="_blank" class="text-gray-400 hover:text-[#1877F2] transition-colors" title="Síguenos en Facebook">
+                        <i data-lucide="facebook" class="w-5 h-5"></i>
+                    </a>
+                    
+                    <!-- TikTok -->
+                    <a href="https://www.tiktok.com/@tuversiondeexcelencia?_r=1&_t=ZS-93JiPtMG0aQ" target="_blank" class="text-gray-400 hover:text-[#ff0050] transition-colors" title="Síguenos en TikTok">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/>
+                        </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/tuversiondeexcelencia?igsh=MW9ybHlubzcybTYycw%3D%3D&utm_source=qr" target="_blank" class="text-gray-400 hover:text-pink-600 transition-colors" title="Síguenos en Instagram">
+                        <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </a>
+
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/lorenzo-eduardo-vazquez-perez-322245ba/" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors" title="Conecta en LinkedIn">
+                        <i data-lucide="linkedin" class="w-5 h-5"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 pt-8 text-center text-gray-600 text-sm">
+                <p>© 2026 Tu Versión de Excelencia. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Trigger once on load
+        reveal();
+    </script>
+</body>
+</html>
